@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Dues Certificate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            border: 1px solid black;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            box-sizing: border-box;
+        }
+        .header {
+            margin-bottom: 20px;
+        }
+        .header h2 {
+            margin: 0;
+            text-align: center;
+        }
+        .info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .info p {
+            flex: 1;
+            margin: 0;
+            margin-right: 10px;
+        }
+        .info p:last-child {
+            margin-right: 0;
+        }
+        .content {
+            line-height: 1.6;
+        }
+        .footer {
+            margin-top: 20px;
+        }
+        .signature {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            text-align: center;
+        }
+        input {
+            border: none;
+            border-bottom: 1px solid black;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
+            background: transparent;
+            padding: 5px;
+        }
+        input::placeholder {
+            color: grey;
+            font-size: 14px;
+        }
+        main {
+            text-align: left;
+        }
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .info, .signature {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .info p, .signature p {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body onload="loadData()">
+    <div class="container">
+        <div class="header">
+            <h2>थकबाकी नसल्याचे प्रमाणपत्र<br>No Dues Certificate</h2>
+            <div class="main">
+                <p>ग्रामपंचायत कार्यालय <input type="text" id="office" placeholder="Office">
+                    ता.<input type="text" id="taluka" placeholder="Taluka"> जि.<input type="text" id="district" placeholder="District">
+                Grampanchayat Office<input type="text" id="office_en" placeholder="Office EN">
+                    Tal.<input type="text" id="taluka_en" placeholder="Taluka EN"> Dist.<input type="text" id="district_en" placeholder="District EN"></p>
+            </div>
+        </div>
+        <div class="info">
+            <p>जा़.क्र.<input type="text" id="serial_number" placeholder="Serial Number"></p>
+            <p>दिनांक: <input type="text" id="date" placeholder="Date"></p>
+        </div>
+        <div class="content">
+            <p>सरपंच/ग्रामसेवक/ग्रामविकास अधिकारी, ग्रामपंचायत<input type="text" id="grampanchayat" placeholder="Grampanchayat"> ता.<input type="text" id="taluka2" placeholder="Taluka 2"> जि.<input type="text" id="district2" placeholder="District 2"></p>
+            <p>Sarpanch/Gramsevak/Village Development Officer, Grampanchayat <input type="text" id="grampanchayat_en" placeholder="Grampanchayat EN"> Tal.<input type="text" id="taluka2_en" placeholder="Taluka 2 EN"> Dist.<input type="text" id="district2_en" placeholder="District 2 EN"></p>
+            <p>यांकडून दाखला देण्यात येतो,</p>
+            <p>is issuing the certificate,</p>
+            <p>की श्री/श्रीमती<input type="text" id="name" placeholder="Name"></p>
+            <p>that Mr./Mrs.<input type="text" id="name_en" placeholder="Name EN"></p>
+            <p>आधार कार्ड क्रमांक <input type="text" id="aadhar_number" placeholder="Aadhar Number"></p>
+            <p>Aadhar Card Number <input type="text" id="aadhar_number_en" placeholder="Aadhar Number EN"></p>
+            <p>हे/ह्या <input type="text" id="residence" placeholder="Residence"> ता.<input type="text" id="residence_taluka" placeholder="Residence Taluka"> जि.<input type="text" id="residence_district" placeholder="Residence District">, महाराष्ट्र येथील कायमचे रहिवासी असून</p>
+            <p>is a permanent resident of <input type="text" id="residence_en" placeholder="Residence EN"> Tal.<input type="text" id="residence_taluka_en" placeholder="Residence Taluka EN"> Dist.<input type="text" id="residence_district_en" placeholder="Residence District EN">, Maharashtra</p>
+            <p>त्यांच्याकडे ग्रामपंचायतीची कोणत्याही प्रकारची थकबाकी नाही.</p>
+            <p>and he/she has no balance due towards Grampanchayat.</p>
+            <p>सदर दाखला अर्जदाराच्या विनंतीनुसार देण्यात येत आहे.</p>
+            <p>This certificate is issued on request of the applicant.</p>
+        </div>
+        <div class="footer">
+            <div class="signature">
+                <p>ठिकाण: <input type="text" id="place" placeholder="Place"></p>
+                <p>Place: <input type="text" id="place_en" placeholder="Place EN"></p>
+            </div>
+            <div class="signature">
+                <p>सही व शिक्का <br> Signature with Stamp <br> सरपंच/ग्रामसेवक/ग्रामविकास अधिकारी <br> Sarpanch/Gramsevak/Village Development Officer</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzEc7oytD_5YfqFBYoHiBkfX-EKG7h5T5dXJVpDwWjOC9GtAJnJY9r0kFOsUPsQrsXibA/exec';
+
+        function loadData() {
+            document.getElementById('office').value = localStorage.getItem('office') || '';
+            document.getElementById('taluka').value = localStorage.getItem('taluka') || '';
+            document.getElementById('district').value = localStorage.getItem('district') || '';
+            document.getElementById('office_en').value = localStorage.getItem('office_en') || '';
+            document.getElementById('taluka_en').value = localStorage.getItem('taluka_en') || '';
+            document.getElementById('district_en').value = localStorage.getItem('district_en') || '';
+            document.getElementById('serial_number').value = localStorage.getItem('serial_number') || '';
+            document.getElementById('date').value = localStorage.getItem('date') || '';
+            document.getElementById('grampanchayat').value = localStorage.getItem('grampanchayat') || '';
+            document.getElementById('taluka2').value = localStorage.getItem('taluka2') || '';
+            document.getElementById('district2').value = localStorage.getItem('district2') || '';
+            document.getElementById('grampanchayat_en').value = localStorage.getItem('grampanchayat_en') || '';
+            document.getElementById('taluka2_en').value = localStorage.getItem('taluka2_en') || '';
+            document.getElementById('district2_en').value = localStorage.getItem('district2_en') || '';
+            document.getElementById('name').value = localStorage.getItem('name') || '';
+            document.getElementById('name_en').value = localStorage.getItem('name_en') || '';
+            document.getElementById('aadhar_number').value = localStorage.getItem('aadhar_number') || '';
+            document.getElementById('aadhar_number_en').value = localStorage.getItem('aadhar_number_en') || '';
+            document.getElementById('residence').value = localStorage.getItem('residence') || '';
+            document.getElementById('residence_taluka').value = localStorage.getItem('residence_taluka') || '';
+            document.getElementById('residence_district').value = localStorage.getItem('residence_district') || '';
+            document.getElementById('residence_en').value = localStorage.getItem('residence_en') || '';
+            document.getElementById('residence_taluka_en').value = localStorage.getItem('residence_taluka_en') || '';
+            document.getElementById('residence_district_en').value = localStorage.getItem('residence_district_en') || '';
+            document.getElementById('place').value = localStorage.getItem('place') || '';
+            document.getElementById('place_en').value = localStorage.getItem('place_en') || '';
+
+            // Set current date if date is not already set
+            if (!document.getElementById('date').value) {
+                const currentDate = new Date().toISOString().split('T')[0];
+                document.getElementById('date').value = currentDate;
+            }
+        }
+
+        function submitForm() {
+            const formData = new FormData();
+            formData.append('office', document.getElementById('office').value);
+            formData.append('taluka', document.getElementById('taluka').value);
+            formData.append('district', document.getElementById('district').value);
+            formData.append('office_en', document.getElementById('office_en').value);
+            formData.append('taluka_en', document.getElementById('taluka_en').value);
+            formData.append('district_en', document.getElementById('district_en').value);
+            formData.append('serial_number', document.getElementById('serial_number').value);
+            formData.append('date', document.getElementById('date').value);
+            formData.append('grampanchayat', document.getElementById('grampanchayat').value);
+            formData.append('taluka2', document.getElementById('taluka2').value);
+            formData.append('district2', document.getElementById('district2').value);
+            formData.append('grampanchayat_en', document.getElementById('grampanchayat_en').value);
+            formData.append('taluka2_en', document.getElementById('taluka2_en').value);
+            formData.append('district2_en', document.getElementById('district2_en').value);
+            formData.append('name', document.getElementById('name').value);
+            formData.append('name_en', document.getElementById('name_en').value);
+            formData.append('aadhar_number', document.getElementById('aadhar_number').value);
+            formData.append('aadhar_number_en', document.getElementById('aadhar_number_en').value);
+            formData.append('residence', document.getElementById('residence').value);
+            formData.append('residence_taluka', document.getElementById('residence_taluka').value);
+            formData.append('residence_district', document.getElementById('residence_district').value);
+            formData.append('residence_en', document.getElementById('residence_en').value);
+            formData.append('residence_taluka_en', document.getElementById('residence_taluka_en').value);
+            formData.append('residence_district_en', document.getElementById('residence_district_en').value);
+            formData.append('place', document.getElementById('place').value);
+            formData.append('place_en', document.getElementById('place_en').value);
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'Success') {
+                    alert('फॉर्म यशस्वीपणे सबमिट केला गेला आहे.');
+                    window.location.href = 'approve.html';
+                } else {
+                    alert('फॉर्म सबमिट करण्यात त्रुटी: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('फॉर्म सबमिट करण्यात त्रुटी: ' + error.message);
+            });
+        }
+    </script>
+</body>
+</html>
